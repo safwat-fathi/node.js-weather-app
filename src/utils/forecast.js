@@ -9,7 +9,12 @@ const forecast = (location, callback) => {
     } else if (body.error) {
       callback("Unable to find location!", undefined);
     } else {
-      callback(undefined, `Temperature is: ${body.currently.temperature}`);
+      callback(
+        undefined,
+        `Summary: ${body.currently.summary}, Temperature is: ${
+          body.currently.temperature
+        }`
+      );
     }
   });
 };
