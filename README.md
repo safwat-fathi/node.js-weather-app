@@ -1,3 +1,3 @@
 # https://sfathi-weather-app.herokuapp.com/
 
-## A weather app to consume darksky API to fetch data!
+## A weather app to consume darksky & mapbox.com APIs to fetch location & weather data!
