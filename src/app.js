@@ -1,3 +1,4 @@
+console.log("awd");
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
@@ -23,14 +24,14 @@ app.use(express.static(publicDirectoryPath));
 app.get("", (req, res) => {
   res.render("index", {
     title: "Weather",
-    name: "Safwat Fathi"
+    name: "Safwat Fathi",
   });
 });
 
 app.get("/about", (req, res) => {
   res.render("about", {
     title: "About Me",
-    name: "Safwat Fathi"
+    name: "Safwat Fathi",
   });
 });
 
@@ -38,34 +39,34 @@ app.get("/help", (req, res) => {
   res.render("help", {
     helpText: "This is some helpful text.",
     title: "Help",
-    name: "Safwat Fathi"
+    name: "Safwat Fathi",
   });
 });
 
 app.get("/weather", (req, res) => {
   if (!req.query.address) {
     return res.send({
-      error: "You must provide an address."
+      error: "You must provide an address.",
     });
   }
   geocode(req.query.address, (err, { latitude, longitude, location } = {}) => {
     if (err) {
       return res.send({
-        error: err
+        error: err,
       });
     }
 
     forecast(`${latitude},${longitude}`, (err, forecastData) => {
       if (err) {
         return res.send({
-          error: err
+          error: err,
         });
       }
 
       res.send({
         forecast: forecastData,
         location,
-        address: req.query.address
+        address: req.query.address,
       });
     });
   });
@@ -74,13 +75,13 @@ app.get("/weather", (req, res) => {
 app.get("/products", (req, res) => {
   if (!req.query.search) {
     return res.send({
-      error: "You must enter a search term."
+      error: "You must enter a search term.",
     });
   }
 
   // console.log(req.query.search);
   res.send({
-    products: []
+    products: [],
   });
 });
 
@@ -88,7 +89,7 @@ app.get("/help/*", (req, res) => {
   res.render("404", {
     title: "404",
     name: "Safwat Fathi",
-    errorMessage: "Help article not found."
+    errorMessage: "Help article not found.",
   });
 });
 
@@ -96,7 +97,7 @@ app.get("*", (req, res) => {
   res.render("404", {
     title: "404",
     name: "Safwat Fathi",
-    errorMessage: "Page not found."
+    errorMessage: "Page not found.",
   });
 });
 
